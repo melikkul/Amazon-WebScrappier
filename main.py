@@ -70,19 +70,6 @@ for asin in df['ASIN']:
         
         window_closed_flag = True
         break     
-    '''while True:
-        price_inf = price_check_func(driver)
-
-        if price_inf != "Ürün bulunamadı!":
-            print(price_inf)
-            break
-        else:
-            print("Ürün bulunamadı, diğer sayfa yükleniyor...")
-        # Sayfa yeniden yüklenmesi veya başka bir işlem yapılması
-            break  # Dış döngüyü başa döndür
-    if price_check_func(driver) == "Ürün bulunamadı!":
-        continue
-        '''
     # Ürün Adı verisine erişme
     print(product_name_checker(driver))
     if product_name_checker(driver) == "Hedef pencere/sekme mevcut değil.":
