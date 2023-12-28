@@ -6,10 +6,10 @@ from selenium.common.exceptions import NoSuchWindowException
 
 def check_and_change_location(driver):
     try:
-        element = WebDriverWait(driver, 10).until(
+        element = WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.ID, 'glow-ingress-line2'))
         )
-        zipcode_buton = WebDriverWait(driver, 10).until(
+        zipcode_buton = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, 'nav-global-location-popover-link'))
         )
         if element.text == "Turkey":

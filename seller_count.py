@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchWindowException
 
 def seller_count_checker(driver):
     try:
-        seller_count_element = WebDriverWait(driver, 2).until(
+        seller_count_element = WebDriverWait(driver, 3).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'olp-text-box'))
         )
         seller_count_text = seller_count_element.text

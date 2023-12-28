@@ -70,6 +70,11 @@ for asin in df['ASIN']:
         
         window_closed_flag = True
         break     
+
+    #Ürün ASIN numarası Çekme
+    print("Ürün ASIN: " + asin)
+
+    
     # Ürün Adı verisine erişme
     print(product_name_checker(driver))
     if product_name_checker(driver) == "Hedef pencere/sekme mevcut değil.":
@@ -88,6 +93,8 @@ for asin in df['ASIN']:
     if seller_count_checker(driver) == "Hedef pencere/sekme mevcut değil.":
         window_closed_flag = True
         break
+
+
 
 # WebDriver'ı kapat
 driver.quit()
