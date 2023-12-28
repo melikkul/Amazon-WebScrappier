@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
@@ -74,7 +73,7 @@ for asin in df['ASIN']:
     #Ürün ASIN numarası Çekme
     print("Ürün ASIN: " + asin)
 
-    
+
     # Ürün Adı verisine erişme
     print(product_name_checker(driver))
     if product_name_checker(driver) == "Hedef pencere/sekme mevcut değil.":
