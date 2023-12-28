@@ -8,7 +8,7 @@
       "name": "Amazon Web Scrapper",
       "type": "python",
       "request": "launch",
-      "program": "D:/KODLAMA/PYTHON/Deneme/deneme.py",
+      "program": "D:/KODLAMA/PYTHON/Deneme/main.py",
       "console": "integratedTerminal",
       "justMyCode": true
     }
