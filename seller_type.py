@@ -15,12 +15,12 @@ def seller_type_checker(driver):
         )
 
         if seller_type.text[11:] == seller_name.text:
-            return "Satıcı Türü : FBM"
+            return "FBM"
         else:
             return "Satıcı Türüne Erişilemedi!!"
 
     except (NoSuchElementException, TimeoutException):
-        return "Satıcı Türü : FBA"
+        return "FBA"
     except NoSuchWindowException:
         return "Hedef pencere/sekme mevcut değil."
 

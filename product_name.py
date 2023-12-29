@@ -10,7 +10,7 @@ def product_name_checker(driver):
         product_title = WebDriverWait(driver, 1).until(
             EC.presence_of_element_located((By.ID, 'productTitle'))
         )
-        return "Ürün adı: " + product_title.text
+        return product_title.text
     except (NoSuchElementException, TimeoutException):
         return None
     except NoSuchWindowException:

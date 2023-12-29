@@ -1,9 +1,7 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 from selenium.common.exceptions import NoSuchWindowException
+from save_to_excel import save_to_excel_func
 
 #############!!FUNCTIONS!!############################
 from location_checker import check_and_change_location
@@ -32,6 +30,10 @@ window_closed_flag = False
 location_checked = False
 ################################
 
+count = 1
+
+data = []
+
 for asin in df['ASIN']:
 
     try:
@@ -41,6 +43,7 @@ for asin in df['ASIN']:
 
         # ... (Diğer işlemler)
 
+    
     except NoSuchWindowException:
         print("Hedef pencere/sekme mevcut değil.")
         break  # Veya başka bir uygun işlem yap
@@ -64,7 +67,7 @@ for asin in df['ASIN']:
         print("Ürün bulunamadı, diğer sayfa yükleniyor...")
         continue  # Döngünün başına dön
 
-    print(price_inf)
+    print("Ürün Fiyatı: " + price_inf)
     if price_inf == "Hedef pencere/sekme mevcut değil.":
         
         window_closed_flag = True
@@ -75,23 +78,39 @@ for asin in df['ASIN']:
 
 
     # Ürün Adı verisine erişme
-    print(product_name_checker(driver))
+    print("Ürün adı: " + product_name_checker(driver))
     if product_name_checker(driver) == "Hedef pencere/sekme mevcut değil.":
         window_closed_flag = True
         break 
     
     # Satıcı Türü Çekme
-    print(seller_type_checker(driver))
+    print("Satıcı Türü : " + seller_type_checker(driver))
     if seller_type_checker(driver) == "Hedef pencere/sekme mevcut değil.":
         window_closed_flag = True
         break 
 
     #Satıcı Sayısı Çekme
 
-    print(seller_count_checker(driver))
+    print("Satıcı Sayısı: " + seller_count_checker(driver))
     if seller_count_checker(driver) == "Hedef pencere/sekme mevcut değil.":
         window_closed_flag = True
         break
+
+
+    # Veri toplama işlemleri...
+    product_name = product_name_checker(driver)
+    price = price_check_func(driver)
+    seller_type = seller_type_checker(driver)
+    seller_count = seller_count_checker(driver)
+
+    columns = ['Sayı','Ürün Adı', 'ASIN', 'Fiyat', 'Satıcı Türü', 'Satıcı Sayısı']
+
+    # Sadece geçerli verileri Excel'e ekle
+    if price != "Ürün bulunamadı!":
+        data.append([count, product_name, asin, price, seller_type, seller_count])
+        save_to_excel_func(data, columns)
+        print("Excele Başarıyla aktarıldı") 
+        count += 1
 
 
 

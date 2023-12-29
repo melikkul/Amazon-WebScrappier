@@ -11,9 +11,9 @@ def seller_count_checker(driver):
             EC.presence_of_element_located((By.CLASS_NAME, 'olp-text-box'))
         )
         seller_count_text = seller_count_element.text
-        return "Satıcı Sayısı:", seller_count_text[12:14]
+        return seller_count_text[12:14]
     except (NoSuchElementException, TimeoutException):
-        return "Satıcı Sayısı: 1"
+        return "1"
     except NoSuchWindowException:
         return "Hedef pencere/sekme mevcut değil."
     

@@ -14,7 +14,7 @@ def price_check_func(driver):
             EC.presence_of_element_located((By.CLASS_NAME, 'a-price-fraction'))
         )
         combined_price = product_price.text + "." + product_price2.text
-        return "Ürün Fiyatı: " + combined_price
+        return combined_price
     except (NoSuchElementException, TimeoutException):
         return "Ürün bulunamadı!"
     except NoSuchWindowException:
